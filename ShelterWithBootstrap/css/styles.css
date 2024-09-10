@@ -1,0 +1,26 @@
+/* Custom styles for the animal shelter */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    margin: 20px 0;
+}
+
+.favorite {
+    color: red;
+    cursor: pointer;
+}
+
+.share {
+    color: blue;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
