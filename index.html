@@ -1,16 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>My First Webpage</title>
-    <link rel="stylesheet" href="/index.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Shelter</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>My Website</h1>
-    <img class="profilePhoto" src="./assets/profilePhoto.jpg" alt="my profile photo" />
-    <p>This is my bio</p>
+    <header>
+        <h1>Welcome to the Animal Shelter</h1>
+        <div class="auth">
+            <button id="login-btn">Login</button>
+            <button id="signup-btn">Signup</button>
+        </div>
+    </header>
 
+    <!-- Animal Cards Section -->
+    <section class="animal-cards">
+        <!-- Animal Card 1 -->
+        <div class="card" onclick="openProfile('animal1')">
+            <img src="https://via.placeholder.com/150" alt="Animal Photo">
+            <h2>Max</h2>
+            <p>Energetic dog who loves the outdoors.</p>
+            <div class="card-actions">
+                <span class="favorite" onclick="toggleFavorite(event, 'animal1')">❤️</span>
+                <span class="share" onclick="shareProfile(event, 'animal1')">🔗</span>
+            </div>
+        </div>
+
+        <!-- More cards can be added similarly -->
+    </section>
+
+    <!-- Animal Profile Modal (Hidden by default) -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeProfile()">×</span>
+            <div id="profile-details">
+                <!-- Animal profile details will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeLogin()">×</span>
+            <h2>Login</h2>
+            <form>
+                <input type="text" id="login-username" placeholder="Username">
+                <input type="password" id="login-password" placeholder="Password">
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeSignup()">×</span>
+            <h2>Signup</h2>
+            <form>
+                <input type="text" id="signup-username" placeholder="Username">
+                <input type="email" id="signup-email" placeholder="Email">
+                <input type="password" id="signup-password" placeholder="Password">
+                <button type="submit">Signup</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
