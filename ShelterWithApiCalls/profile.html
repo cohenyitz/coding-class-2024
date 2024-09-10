@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animal Profile</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <a href="index.html" class="btn btn-outline-primary mb-3">Back to Home</a>
+      <div id="profile-content" class="row">
+        <!-- Profile content will be dynamically loaded here -->
+      </div>
+    </div>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const animalId = urlParams.get("id");
+      const token = localStorage.getItem("jwtToken");
+
+      async function fetchAnimalProfile() {
+        if (!token) {
+          alert("You are not authorized to view this profile. Please log in.");
+          window.location.href = "login.html";
+          return;
+        }
+
+        try {
+          const response = await fetch(
+            `http://localhost:8080/api/animals/${animalId}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          if (response.status === 401) {
+            alert("Invalid or expired token. Please log in again.");
+            localStorage.removeItem("jwtToken");
+            window.location.href = "login.html";
+          } else {
+            const animal = await response.json();
+            displayAnimalProfile(animal);
+          }
+        } catch (error) {
+          console.error("Error fetching animal profile:", error);
+        }
+      }
+
+      function displayAnimalProfile(animal) {
+        const profileContent = document.getElementById("profile-content");
+        profileContent.innerHTML = `
+            <div class="col-md-6">
+                <img src="${animal.imageUrl}" alt="${animal.name}" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6">
+                <h2>${animal.name}</h2>
+                <p>${animal.bio}</p>
+                <p><strong>Age:</strong> ${animal.age} years</p>
+                <p><strong>Breed:</strong> ${animal.breed}</p>
+                <p><strong>Health:</strong> ${animal.health}</p>
+                <button class="btn btn-success">Adopt ${animal.name}</button>
+                <button class="btn btn-outline-secondary">Share Profile</button>
+            </div>`;
+      }
+
+      document.addEventListener("DOMContentLoaded", fetchAnimalProfile);
+    </script>
+  </body>
+</html>
