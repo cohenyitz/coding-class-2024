@@ -1,0 +1,32 @@
+{
+    "animals": [
+      {
+        "id": 1,
+        "name": "Whiskers",
+        "bio": "Whiskers is a playful kitten looking for a forever home.",
+        "age": 2,
+        "breed": "Domestic Short Hair",
+        "health": "Vaccinated, Spayed",
+        "imageUrl": "https://placekitten.com/400/300"
+      },
+      {
+        "id": 2,
+        "name": "Buddy",
+        "bio": "Buddy is a friendly dog looking for a loving family.",
+        "age": 3,
+        "breed": "Golden Retriever",
+        "health": "Vaccinated",
+        "imageUrl": "https://placedog.net/400/300"
+      }
+    ],
+    "users": [
+      {
+        "id": 1,
+        "username": "testuser",
+        "email": "testuser@example.com",
+        "password": "test123",
+        "token": "fake-jwt-token-for-testuser"
+      }
+    ]
+  }
+  
