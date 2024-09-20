@@ -2,13 +2,17 @@
 const loginModal = document.getElementById("login-modal");
 const signupModal = document.getElementById("signup-modal");
 
-document.getElementById("login-btn").addEventListener("click", () => {
-    loginModal.style.display = "block";
-});
+document
+    .getElementById("login-btn")
+    .addEventListener("click", () => {
+        loginModal.style.display = "block";
+    });
 
-document.getElementById("signup-btn").addEventListener("click", () => {
-    signupModal.style.display = "block";
-});
+document
+    .getElementById("signup-btn")
+    .addEventListener("click", () => {
+        signupModal.style.display = "block";
+    });
 
 function closeLogin() {
     loginModal.style.display = "none";
@@ -29,6 +33,11 @@ function openProfile(animalId) {
             name: 'Max',
             bio: 'Max is an energetic dog who loves the outdoors!',
             image: 'https://via.placeholder.com/150'
+        },
+        'animal2': {
+            name: 'dascool',
+            bio: 'dascool Cool animal that we cannot identify',
+            image: 'assets/baby yoda.jpg'
         },
         // Add more animal profiles as needed
     };
